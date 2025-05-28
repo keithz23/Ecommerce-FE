@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Image from "next/image";
 
 export default function Home() {
@@ -62,6 +63,7 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+        <Input id="name" type="text" label="name"/>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
