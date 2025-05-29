@@ -23,6 +23,7 @@ const categoriesData = [
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Shop", href: "/shop" },
+  { name: "Products", href: "/feature" },
   { name: "Contact", href: "/contact" },
 ];
 

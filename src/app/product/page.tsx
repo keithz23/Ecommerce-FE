@@ -1,5 +1,5 @@
 "use client";
-import { ChevronDown, Heart } from "lucide-react";
+import { ChevronDown, Eye, Heart, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import {
@@ -25,7 +25,7 @@ const categoriesData = [
   { id: 3, name: "Accessories" },
 ];
 
-export const productData = [
+const productData = [
   {
     id: 1,
     name: "Classic Running Shoes",
@@ -36,6 +36,7 @@ export const productData = [
         url: "https://spotify-clone-uploads.s3.ap-southeast-2.amazonaws.com/product/0cff693f-fece-490c-994b-94a7910714e8.jpg",
       },
     ],
+    categories: "Shoes",
   },
   {
     id: 2,
@@ -47,6 +48,7 @@ export const productData = [
         url: "https://spotify-clone-uploads.s3.ap-southeast-2.amazonaws.com/product/248c2b9e-eccb-4ec9-8aee-0483e9a863bc.jpg",
       },
     ],
+    categories: "Shoes",
   },
   {
     id: 3,
@@ -58,6 +60,7 @@ export const productData = [
         url: "https://spotify-clone-uploads.s3.ap-southeast-2.amazonaws.com/product/2a4a674e-ae70-450d-aae6-b84e146faa3d.jpg",
       },
     ],
+    categories: "Shoes",
   },
   {
     id: 4,
@@ -69,6 +72,7 @@ export const productData = [
         url: "https://spotify-clone-uploads.s3.ap-southeast-2.amazonaws.com/product/b3233254-1bc9-45ca-8163-21b75dc31522.jpg",
       },
     ],
+    categories: "Shoes",
   },
   {
     id: 5,
@@ -80,6 +84,7 @@ export const productData = [
         url: "https://spotify-clone-uploads.s3.ap-southeast-2.amazonaws.com/product/36b3e0ff-c237-415e-8be4-a024377239c6.jpg",
       },
     ],
+    categories: "Shoes",
   },
   {
     id: 6,
@@ -91,6 +96,7 @@ export const productData = [
         url: "https://spotify-clone-uploads.s3.ap-southeast-2.amazonaws.com/product/3f418b0c-1cfb-42e5-9207-85609ed54651.jpg",
       },
     ],
+    categories: "Shoes",
   },
 ];
 
@@ -229,16 +235,15 @@ export default function Product() {
               <img
                 src={item.imagePath?.[0]?.url || ""}
                 alt={item.name}
-                className="w-full h-auto aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
-                onClick={() => handleShowProductDetails(item.id)}
+                className="w-full h-80 aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <button className="absolute top-3 right-3 p-1.5 rounded-full bg-white/80 hover:bg-white shadow-sm transition-all duration-300">
-                <Heart className="w-5 h-5 text-gray-500 transition-colors duration-300 hover:text-red-500" />
-              </button>
             </div>
-            <div className="p-5">
-              <span className="block mb-2 text-sm text-gray-600 line-clamp-2">
-                {item.desc}
+            <div className="p-5 border-t-2">
+              <span className="block mb-2 text-sm text-mid-night font-semibold line-clamp-2">
+                {item.categories}
+              </span>
+              <span className="block mb-2 text-md text-mid-night font-semibold line-clamp-2">
+                {item.name}
               </span>
               <div className="flex justify-between">
                 <span className="text-xl font-bold text-electric-blue">
@@ -246,9 +251,17 @@ export default function Product() {
                 </span>
               </div>
             </div>
-            <button className="absolute bottom-0 left-0 right-0 mx-auto w-[90%] mb-4 px-4 py-2 bg-electric-blue text-white rounded-lg opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 cursor-pointer">
-              Add to Cart
-            </button>
+            <div className="flex flex-col items-center gap-2 absolute right-4 bottom-32 p-3 bg-black/70 text-white rounded-md opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 cursor-pointer z-10 shadow-lg">
+              <div className="relative group">
+                <Heart className="w-5 h-5 hover:text-red-500 transition" />
+              </div>
+              <div className="relative group">
+                <Eye className="w-5 h-5 hover:text-blue-400 transition" />
+              </div>
+              <div className="relative group">
+                <ShoppingCart className="w-5 h-5 hover:text-green-400 transition" />
+              </div>
+            </div>
           </div>
         ))}
       </section>

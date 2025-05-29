@@ -43,7 +43,12 @@
   --color-electric-blue: #0989ff;
   --color-mid-night: #010f1c;
   --color-soft-gray: #a8acb0;
+  --color-dark-gray: #55585b;
   --color-electric-blue-soft: #0989ff0f;
+  --color-pink-vibe: #fd4b6b;
+  --color-cloud: #f6f7f9;
+  --color-neutral-gray: #a0a2a4;
+  --color-cloud-blue: #ecf2f7;
 }
 
 :root {

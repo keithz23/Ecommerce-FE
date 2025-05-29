@@ -197,7 +197,7 @@ export const Header: React.FC<HeaderColor> = ({ color = "bg-black" }) => {
                 </h5>
               </div>
             </Link>
-            <Heart className="hidden lg:block h-8 w-8 text-gray-700 hover:text-electric-blue cursor-pointer" />
+            <Heart className="hidden lg:block h-6 w-6 text-gray-700 hover:text-electric-blue cursor-pointer" />
             <ShoppingBag className="h-6 w-6 text-gray-700 hover:text-electric-blue cursor-pointer" />
             <button className="lg:hidden">
               <Menu className="w-6 h-6" />
