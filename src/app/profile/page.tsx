@@ -19,7 +19,7 @@ import {
 import { JSX, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthStore } from "../store/auth/useAuthStore";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import SubHeader from "@/components/Header/SubHeader";
 import { ModalUpload } from "@/components/common/ModalUpload";
 import Footer from "@/components/Footer/Footer";

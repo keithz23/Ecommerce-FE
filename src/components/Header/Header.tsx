@@ -15,7 +15,7 @@ import SubHeader from "./SubHeader";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { useAuthStore } from "@/app/store/auth/useAuthStore";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useWindowEvents } from "@/app/hooks/useWindowsEvent";
 
 interface HeaderColor {

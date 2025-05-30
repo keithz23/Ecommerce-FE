@@ -10,7 +10,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
 // Mock data
@@ -35,7 +35,6 @@ export default function SubHeader() {
 
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const toggleDropdown = (dropdownKey: string) => {
     setOpenDropDown((prev) => (prev === dropdownKey ? null : dropdownKey));

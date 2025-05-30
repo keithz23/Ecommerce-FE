@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { Toaster } from "react-hot-toast";
-import backgroundLogin from "@/public/assets/background_login.png";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import Footer from "@/components/Footer/Footer";
 import SubHeader from "@/components/Header/SubHeader";

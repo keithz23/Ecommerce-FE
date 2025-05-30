@@ -7,7 +7,7 @@ import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { useAuthStore } from "@/app/store/auth/useAuthStore";
 import Footer from "@/components/Footer/Footer";
 import SubHeader from "@/components/Header/SubHeader";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

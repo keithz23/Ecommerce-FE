@@ -1,7 +1,7 @@
 "use client";
 import { ChevronDown, Eye, Heart, ShoppingCart } from "lucide-react";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
@@ -105,6 +105,7 @@ export default function Product() {
   const [openDropdown, setOpenDropDown] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("");
   const [sortingType, setSortingType] = useState<string>("null");
+  const router = useRouter();
   // const { productData, total } = useProductData({
   //   page: currentPage,
   //   categoryId: activeCategory === "" ? undefined : Number(activeCategory),
@@ -113,7 +114,7 @@ export default function Product() {
   // });
 
   const handleShowProductDetails = (id: number) => {
-    useRouter().push(`/product/${id}`);
+    router.push(`/product/${id}`);
   };
 
   const handlePageChange = (page: number) => {
