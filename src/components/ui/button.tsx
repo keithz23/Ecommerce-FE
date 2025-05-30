@@ -22,6 +22,8 @@ const buttonVariants = cva(
         black:
           "border border-mid-night bg-mid-night text-white hover:text-mid-night hover:bg-white transition-all duration-300 ease-in-out cursor-pointer",
         blue: "bg-mid-night text-white hover:bg-electric-blue transition-all duration-300 ease-in-out cursor-pointer",
+        border:
+          "border-1 border-mid-night text-mid-night hover:bg-electric-blue hover:text-white hover:border-electric-blue transition-all duration-300 ease-in-out cursor-pointer",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

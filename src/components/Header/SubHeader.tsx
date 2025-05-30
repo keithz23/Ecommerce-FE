@@ -13,26 +13,16 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { Button } from "../ui/button";
-
-// Mock data
-const categoriesData = [
-  { id: 1, name: "Shoes" },
-  { id: 2, name: "Clothing" },
-  { id: 3, name: "Accessories" },
-];
-
-const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Shop", href: "/shop" },
-  { name: "Products", href: "/feature" },
-  { name: "Contact", href: "/contact" },
-];
+import Cart from "../cart/Cart";
+import { useCartStore } from "@/app/store/cart/useCartStore";
+import { categoriesData, navItems } from "@/app/constants/headerData";
 
 export default function SubHeader() {
   const [isActive, setIsActive] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropDown] = useState<string | null>(null);
   const [keyword, setKeyword] = useState("");
+  const { isCartOpen, closeCart, openCart } = useCartStore();
 
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -74,9 +64,12 @@ export default function SubHeader() {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex ml-3">
-              <ul className="flex gap-4 text-sm text-gray-700">
+              <ul className="flex gap-4 text-lg text-mid-night">
                 {navItems.map((item, idx) => (
-                  <li key={idx} className="hover:text-[#0989ff]">
+                  <li
+                    key={idx}
+                    className="hover:text-electric-blue transition-all duration-300"
+                  >
                     <Link href={item.href}>{item.name}</Link>
                   </li>
                 ))}
@@ -91,7 +84,9 @@ export default function SubHeader() {
             <div
               ref={searchRef}
               className={`hidden lg:flex border h-10 bg-gray-100 items-center w-full max-w-xs transition ${
-                isActive ? "border-primary" : "border-gray-300"
+                isActive
+                  ? "border-electric-blue"
+                  : "border-gray-300"
               }`}
               onClick={toggleSetIsActive}
             >
@@ -108,8 +103,11 @@ export default function SubHeader() {
               </button>
             </div>
 
-            <Heart className="h-6 w-6 text-gray-700 hidden lg:block cursor-pointer hover:text-primary" />
-            <ShoppingBag className="h-6 w-6 text-gray-700 cursor-pointer hover:text-primary" />
+            <Heart className="h-6 w-6 text-gray-700 hidden lg:block cursor-pointer hover:text-electric-blue transition-all duration-300" />
+            <ShoppingBag
+              className="h-6 w-6 text-gray-700 cursor-pointer hover:text-electric-blue transition-all duration-300"
+              onClick={openCart}
+            />
             <button onClick={toggleMobileMenu} className="lg:hidden">
               <AlignRight className="h-6 w-6" />
             </button>
@@ -148,7 +146,7 @@ export default function SubHeader() {
 
             {/* Categories */}
             <button
-              className="flex justify-between items-center h-12 mt-5 w-full bg-[#0989ff] text-white px-5 hover:bg-black"
+              className="flex justify-between items-center h-12 mt-5 w-full bg-electric-blue text-white px-5 hover:bg-black"
               onClick={() => toggleDropdown("category")}
             >
               <span className="flex gap-x-2 items-center">
@@ -186,7 +184,7 @@ export default function SubHeader() {
             {/* Mobile Nav */}
             <ul className="mt-6 space-y-4 text-md font-semibold text-gray-700">
               {navItems.map((item, idx) => (
-                <li key={idx} className="hover:text-[#0989ff]">
+                <li key={idx} className="hover:text-electric-blue">
                   <Link href={item.href}>{item.name}</Link>
                 </li>
               ))}
@@ -196,7 +194,9 @@ export default function SubHeader() {
           <div className="border-t p-4 text-sm flex flex-col justify-center gap-3">
             <div>
               <Link href={"/login"}>
-                <Button variant={"black"} className="w-full py-6">Login</Button>
+                <Button variant={"black"} className="w-full py-6">
+                  Login
+                </Button>
               </Link>
             </div>
 
@@ -211,6 +211,8 @@ export default function SubHeader() {
           </div>
         </div>
       </div>
+
+      <Cart isOpen={isCartOpen} onClose={closeCart} />
     </div>
   );
 }
