@@ -9,7 +9,7 @@ import Deal from "@/components/common/Deal";
 
 export default function Home() {
   return (
-    <>
+    <div className="selection:bg-mid-night selection:text-white">
       {/* Header */}
       <Header />
 
@@ -30,6 +30,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-    </>
+    </div>
   );
 }

@@ -92,15 +92,17 @@ export default function Deal() {
         {/* Title */}
         <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-3">
           {/* Title */}
-          <h1 className="text-3xl md:text-5xl font-semibold">
-            Deal of The Day
+          <div className="relative inline-block">
+            <h1 className="text-3xl md:text-4xl font-semibold relative z-10">
+              Deal of The Day
+            </h1>
             <svg
               width="114"
               height="35"
               viewBox="0 0 114 35"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="text-pink-vibe -mt-5"
+              className="absolute left-0 top-0 text-pink-vibe mt-5 z-0"
             >
               <path
                 d="M112 23.275C1.84952 -10.6834 -7.36586 1.48086 7.50443 32.9053"
@@ -108,9 +110,9 @@ export default function Deal() {
                 strokeWidth="4"
                 strokeMiterlimit="3.8637"
                 strokeLinecap="round"
-              ></path>
+              />
             </svg>
-          </h1>
+          </div>
 
           {/* Divide */}
           <div className="flex flex-col justify-center">
@@ -160,7 +162,7 @@ export default function Deal() {
           {productData?.map((item) => (
             <div
               key={item.id}
-              className="relative overflow-hidden transition-all duration-300 bg-white shadow-sm group rounded-xl hover:shadow-lg"
+              className="relative overflow-hidden transition-all duration-300 bg-white shadow-sm group rounded hover:shadow-lg"
             >
               <div className="relative w-full">
                 <img

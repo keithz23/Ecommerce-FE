@@ -229,7 +229,7 @@ export default function Product() {
         {productData?.map((item) => (
           <div
             key={item.id}
-            className="relative overflow-hidden transition-all duration-300 bg-white shadow-sm group rounded-xl hover:shadow-lg"
+            className="relative overflow-hidden transition-all duration-300 bg-white shadow-sm group rounded hover:shadow-lg"
           >
             <div className="relative w-full">
               <img
