@@ -1,6 +1,13 @@
 "use client";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
 import React, { useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
 const ButtonItem = [
   { id: 1, name: "New" },
@@ -158,45 +165,46 @@ export default function Deal() {
         </div>
 
         {/* Product */}
-        <div className="grid grid-cols-1 gap-6 cursor-pointer sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-8 my-5">
-          {productData?.map((item) => (
-            <div
-              key={item.id}
-              className="relative overflow-hidden transition-all duration-300 bg-white shadow-sm group rounded hover:shadow-lg"
-            >
-              <div className="relative w-full">
-                <img
-                  src={item.imagePath?.[0]?.url || ""}
-                  alt={item.name}
-                  className="w-full h-80 aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-5 border-t-2">
-                <span className="block mb-2 text-sm text-mid-night font-semibold line-clamp-2">
-                  {item.categories}
-                </span>
-                <span className="block mb-2 text-md text-mid-night font-semibold line-clamp-2">
-                  {item.name}
-                </span>
-                <div className="flex justify-between">
-                  <span className="text-xl font-bold text-electric-blue">
-                    ${item.price}
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-2 absolute right-4 bottom-32 p-3 bg-black/70 text-white rounded-md opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 cursor-pointer z-10 shadow-lg">
-                <div className="relative group">
-                  <Heart className="w-5 h-5 hover:text-red-500 transition" />
-                </div>
-                <div className="relative group">
-                  <Eye className="w-5 h-5 hover:text-blue-400 transition" />
-                </div>
-                <div className="relative group">
-                  <ShoppingCart className="w-5 h-5 hover:text-green-400 transition" />
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="mt-5">
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-4">
+              {" "}
+              {productData.map((item) => (
+                <CarouselItem
+                  key={item.id}
+                  className="pl-8 md:basis-1/2 lg:basis-1/4"
+                >
+                  <div className="relative overflow-hidden transition-all duration-300 bg-white shadow-sm group rounded hover:shadow-lg">
+                    <div className="relative">
+                      <img
+                        src={item.imagePath?.[0]?.url || ""}
+                        alt={item.name}
+                        className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-5 border-t-2">
+                      <span className="block mb-2 text-sm text-mid-night font-semibold line-clamp-2">
+                        {item.categories}
+                      </span>
+                      <span className="block mb-2 text-md text-mid-night font-semibold line-clamp-2">
+                        {item.name}
+                      </span>
+                      <div className="flex justify-between">
+                        <span className="text-xl font-bold text-electric-blue">
+                          ${item.price}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-2 absolute right-4 bottom-32 p-3 bg-black/70 text-white rounded-md opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 cursor-pointer z-10 shadow-lg">
+                      <Heart className="w-5 h-5 hover:text-red-500 transition" />
+                      <Eye className="w-5 h-5 hover:text-blue-400 transition" />
+                      <ShoppingCart className="w-5 h-5 hover:text-green-400 transition" />
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
       </section>
     </div>

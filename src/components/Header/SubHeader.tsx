@@ -12,6 +12,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { Button } from "../ui/button";
 
 // Mock data
 const categoriesData = [
@@ -192,13 +193,21 @@ export default function SubHeader() {
             </ul>
           </div>
 
-          <div className="border-t p-4 text-sm flex justify-around">
-            <button className="flex gap-x-2">
-              Currency: USD <ChevronDown />
-            </button>
-            <button className="flex gap-x-2">
-              English <ChevronDown />
-            </button>
+          <div className="border-t p-4 text-sm flex flex-col justify-center gap-3">
+            <div>
+              <Link href={"/login"}>
+                <Button variant={"black"} className="w-full py-6">Login</Button>
+              </Link>
+            </div>
+
+            <div className="flex justify-around">
+              <button className="flex gap-x-2">
+                Currency: USD <ChevronDown />
+              </button>
+              <button className="flex gap-x-2">
+                English <ChevronDown />
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <>
-      <div className="container flex flex-col justify-center mx-auto h-screen">
+      <div className="container flex flex-col justify-center mx-auto h-screen selection:bg-mid-night selection:text-white">
         <div className="container flex flex-col items-center gap-3">
           <img
             src="https://shofy-svelte.vercel.app/img/error/error.png"
