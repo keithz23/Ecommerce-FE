@@ -50,7 +50,7 @@ export default function SubHeader() {
 
   return (
     <div>
-      <div className="h-20 p-6 border-b border-gray-100 sticky top-0 bg-white z-50">
+      <div className="h-20 p-6 border-b border-gray-100 sticky top-0 bg-white z-40 shadow-md">
         <div className="container mx-auto grid grid-cols-3 items-center px-3">
           {/* Logo + Menu Button */}
           <div className="col-span-1 flex items-center justify-between">

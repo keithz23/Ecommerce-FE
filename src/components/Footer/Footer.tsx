@@ -62,7 +62,7 @@ const InformationItem = [
 export default function Footer() {
   return (
     <footer className="bg-[#f4f7f9] text-mid-night md:p-22 p-6">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         {/* Logo */}
         <div className="flex flex-col justify-center gap-3">
           <Link href="/">

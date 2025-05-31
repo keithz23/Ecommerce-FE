@@ -6,7 +6,7 @@ export const categoriesData = [
 
 export const navItems = [
   { name: "Home", href: "/" },
-  { name: "Shop", href: "/shop" },
-  { name: "Products", href: "/feature" },
+  { name: "About", href: "/about" },
+  { name: "Products", href: "/products" },
   { name: "Contact", href: "/contact" },
 ];
