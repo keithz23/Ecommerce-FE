@@ -10,6 +10,7 @@ import { useAuthStore } from "@/app/store/auth/useAuthStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
 type FormValues = {
   email: string;
   password: string;
@@ -52,7 +53,7 @@ const Login = () => {
         <div className="container relative flex flex-col items-center justify-center min-h-screen px-4 py-8 mx-auto sm:py-12">
           <div className="absolute inset-0 z-0 overflow-hidden">
             <img
-              src='assets/background_login.png'
+              src="assets/background_login.png"
               className="object-cover w-full h-full"
               alt="Background"
             />

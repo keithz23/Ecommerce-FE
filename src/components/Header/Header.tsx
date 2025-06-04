@@ -9,7 +9,6 @@ import {
 import SubHeader from "./SubHeader";
 import Link from "next/link";
 import { useAuthStore } from "@/app/store/auth/useAuthStore";
-import { useRouter } from "next/navigation";
 import { useWindowEvents } from "@/app/hooks/useWindowsEvent";
 import Cart from "../cart/Cart";
 import TopHeader from "./TopHeader";
@@ -22,13 +21,8 @@ interface HeaderColor {
 
 export const Header: React.FC<HeaderColor> = ({ color = "bg-black" }) => {
   const { isScrolled, isMobile } = useWindowEvents();
-  const { isAuthenticated, logout, user } = useAuthStore();
+  const { isAuthenticated, user } = useAuthStore();
   const { isCartOpen, closeCart, openCart } = useCartStore();
-
-  const handleLogout = () => {
-    logout();
-    useRouter().push("/login");
-  };
 
   return (
     <>

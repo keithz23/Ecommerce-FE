@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 export default function TopHeader() {
   const router = useRouter();
   const { toggle, isOpen } = useDropdown();
-  const { isAuthenticated, logout, user } = useAuthStore();
+  const { isAuthenticated, logout } = useAuthStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleLogout = () => {
