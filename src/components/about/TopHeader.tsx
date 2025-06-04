@@ -1,6 +1,7 @@
 import useDropdown from "@/app/hooks/useDropdown";
 import { useAuthStore } from "@/app/store/auth/useAuthStore";
-import { ChevronDown, Facebook, Link, LogOut, PhoneCall } from "lucide-react";
+import { ChevronDown, Facebook, LogOut, PhoneCall } from "lucide-react";
+import Link from "next/link";
 import React, { useRef } from "react";
 
 export default function TopHeader() {
