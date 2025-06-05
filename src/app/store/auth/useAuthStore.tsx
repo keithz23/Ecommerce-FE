@@ -4,6 +4,7 @@ import { AxiosError } from "axios";
 import { AuthResponse, User } from "@/app/types/auth/auth.inteface";
 import { IUserSignup } from "@/app/types/user/user.interface";
 import { authService } from "@/app/services/public/auth.service";
+import { CredentialResponse } from "@react-oauth/google";
 
 interface AuthState {
   user: User | null;
@@ -14,7 +15,7 @@ interface AuthState {
   logout: () => Promise<void>;
   profile: () => Promise<unknown>;
   checkAuth: () => Promise<void>;
-  ggLogin: (credentialResponse: unknown) => Promise<string | void>;
+  ggLogin: (credentialResponse: CredentialResponse) => Promise<string | void>;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -106,7 +107,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     }
   },
 
-  ggLogin: async (crendentialResponse: unknown) => {
+  ggLogin: async (crendentialResponse: CredentialResponse) => {
     set({ isLoading: true });
     try {
       const response = await authService.ggLogin(crendentialResponse);

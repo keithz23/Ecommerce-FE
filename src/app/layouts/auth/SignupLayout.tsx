@@ -53,7 +53,7 @@ export default function Signup() {
 
   const handleGoogleLogin = async (credentialResponse: CredentialResponse) => {
     try {
-      await ggLogin(credentialResponse.credential);
+      await ggLogin(credentialResponse);
       toast.success("Google signup successful!");
       useRouter().push("/dashboard");
     } catch (error: unknown) {
