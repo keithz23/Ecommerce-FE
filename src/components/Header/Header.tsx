@@ -14,6 +14,7 @@ import Cart from "../cart/Cart";
 import TopHeader from "./TopHeader";
 import { useCartStore } from "@/app/store/cart/useCartStore";
 import CategoriesMenu from "./CategoriesMenu";
+import Image from "next/image";
 
 interface HeaderColor {
   color?: string;

@@ -2,6 +2,8 @@ import { instance } from "@/lib/axios";
 import { IChangePassword, IUserSignup } from "@/app/types/user/user.interface";
 import { EAuthService } from "@/app/enums/services/auth/EAuthService";
 import { EService } from "@/app/enums/EService";
+import { CredentialResponse } from "@react-oauth/google";
+import { AxiosRequestHeaders } from "axios";
 
 export const authService = {
   signup: (data: IUserSignup) => {
@@ -14,7 +16,7 @@ export const authService = {
     return instance.post(url, { email, password });
   },
 
-  ggLogin: (credentialResponse: any) => {
+  ggLogin: (credentialResponse: CredentialResponse) => {
     const url = `${EService.AUTH_SERVICE}/${EAuthService.GOOGLE_SERVICE}`;
     return instance.post(url, { token: credentialResponse.credential });
   },
@@ -29,7 +31,7 @@ export const authService = {
     return instance.get(url);
   },
 
-  changePassword: (payload: IChangePassword, headers: any) => {
+  changePassword: (payload: IChangePassword, headers: AxiosRequestHeaders) => {
     const url = `${EService.AUTH_SERVICE}/${EAuthService.CHANGE_PASSWORD}`;
     return instance.post(url, payload, { headers });
   },

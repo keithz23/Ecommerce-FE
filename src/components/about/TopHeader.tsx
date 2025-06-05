@@ -1,13 +1,14 @@
+import { LanguagesData, SettingsData } from "@/app/constants/SettingsData";
 import useDropdown from "@/app/hooks/useDropdown";
 import { useAuthStore } from "@/app/store/auth/useAuthStore";
-import { ChevronDown, Facebook, Link, LogOut, PhoneCall } from "lucide-react";
+import { ChevronDown, Facebook, LogOut, PhoneCall } from "lucide-react";
+import Link from "next/link";
 import React, { useRef } from "react";
 
 export default function TopHeader() {
   const { toggle, isOpen } = useDropdown();
   const { isAuthenticated } = useAuthStore();
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const languages = ["English", "Spanish", "French"];
   const dropdownItemClass = "px-4 py-2 cursor-pointer hover:bg-gray-100";
   return (
     <div className="w-full px-3 sm:px-5 mx-auto text-xs sm:text-sm bg-white shadow-sm mb-1 hidden lg:block">
@@ -56,9 +57,9 @@ export default function TopHeader() {
                   : "opacity-0 translate-y-2 pointer-events-none"
               }`}
             >
-              {languages.map((lang) => (
-                <li key={lang} role="menuitem">
-                  <button className={dropdownItemClass}>{lang}</button>
+              {LanguagesData.map((lang) => (
+                <li key={lang.id} role="menuitem">
+                  <button className={dropdownItemClass}>{lang.name}</button>
                 </li>
               ))}
             </ul>
@@ -86,15 +87,11 @@ export default function TopHeader() {
                   : "opacity-0 translate-y-2 pointer-events-none"
               }`}
             >
-              <li role="menuitem" className={dropdownItemClass}>
-                <Link href="/profile">My Profile</Link>
-              </li>
-              <li role="menuitem" className={dropdownItemClass}>
-                <button type="button">Wishlist</button>
-              </li>
-              <li role="menuitem" className={dropdownItemClass}>
-                <Link href="/cart-details">Cart</Link>
-              </li>
+              {SettingsData.map((si) => (
+                <li role="menuitem" className={dropdownItemClass} key={si.id}>
+                  <Link href={si.name}>{si.name}</Link>
+                </li>
+              ))}
               {isAuthenticated ? (
                 <li role="menuitem">
                   <button

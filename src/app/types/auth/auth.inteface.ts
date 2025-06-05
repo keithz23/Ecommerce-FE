@@ -14,3 +14,9 @@ export interface AuthResponse {
     isAuthenticated?: boolean;
   };
 }
+
+export interface LoginWithGoogleResponse {
+  clientId: string;
+  crendential: string;
+  selectBy?: string;
+}

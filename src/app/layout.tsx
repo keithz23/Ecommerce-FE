@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "EcomGrove is a modern and scalable eCommerce platform designed for seamless online shopping.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://ecomgrove.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ecomgrove.store"
   ),
   keywords: ["ecommerce", "online shopping", "EcomGrove", "marketplace"],
   authors: [{ name: "EcomGrove Team" }],

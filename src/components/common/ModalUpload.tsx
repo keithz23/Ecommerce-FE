@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { CloudUpload, X } from "lucide-react";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 interface ModalUploadProps {
   isOpen: boolean;
@@ -70,9 +71,11 @@ export const ModalUpload: React.FC<ModalUploadProps> = ({
           {/* Image Preview */}
           {previewImage ? (
             <div className="relative">
-              <img
+              <Image
                 src={previewImage}
                 alt="Preview"
+                width={1080}
+                height={320}
                 className="w-full h-[20rem] object-cover rounded-lg shadow-md"
               />
               <button

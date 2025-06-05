@@ -16,6 +16,7 @@ import {
   productData,
   ProductSortingType,
 } from "../constants/ProductData";
+import Image from "next/image";
 
 export default function Product() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -149,11 +150,13 @@ export default function Product() {
             key={item.id}
             className="relative overflow-hidden transition-all duration-300 bg-white shadow-sm group rounded hover:shadow-lg"
           >
-            <div className="relative w-full">
-              <img
+            <div className="relative w-full aspect-[2/3]">
+              <Image
                 src={item.imagePath?.[0]?.url || ""}
                 alt={item.name}
-                className="w-full h-80 aspect-[4/3] object-cover transition-transform duration-300 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-t"
+                sizes="(max-width: 768px) 100vw, 25vw"
               />
             </div>
             <div className="p-5 border-t-2">

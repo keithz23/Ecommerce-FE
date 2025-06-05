@@ -15,6 +15,11 @@ import {
   ProfileItems,
   ProfileTabItems,
 } from "../constants/ProfileData";
+import {
+  ChangePasswordFields,
+  InformationFields,
+} from "../types/profile/profile.interface";
+import Image from "next/image";
 
 type FormValues = {
   oldPassword: string;
@@ -32,7 +37,6 @@ type InformationFormValues = {
 
 export default function Profile() {
   const [isModalUploadOpen, setIsModalUploadOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isActive, setIsActive] = useState<string>("Profile");
   const [isInputActive, setIsInputActive] = useState<string>("");
   const { logout } = useAuthStore();
@@ -72,10 +76,12 @@ export default function Profile() {
         <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4 p-4">
           <div className="flex gap-x-4 items-center">
             <div className="relative w-20 h-20" onClick={handleModalUpload}>
-              <img
+              <Image
                 src={`https://vn4u.vn/wp-content/uploads/2023/09/logo-co-tinh-nhat-quan-2.png`}
                 alt="Profile picture"
                 referrerPolicy="no-referrer"
+                width={80}
+                height={80}
                 className="border rounded-full h-20 w-20 object-cover"
               />
               <div className="absolute bottom-0 right-0 bg-electric-blue p-1 rounded-full shadow cursor-pointer hover:bg-black transition-all duration-300 ease-in-out">
@@ -121,7 +127,7 @@ export default function Profile() {
                   : "grid-cols-1"
               }`}
             >
-              {row.fields.map((field: any) => (
+              {row.fields.map((field: InformationFields) => (
                 <div
                   className={`border p-3 flex items-center gap-2 transition ${
                     isInputActive === field.name
@@ -187,7 +193,7 @@ export default function Profile() {
                     : "grid-cols-1"
                 }`}
               >
-                {row.fields.map((field) => (
+                {row.fields.map((field: ChangePasswordFields) => (
                   <div
                     className="relative z-0 w-full mb-6 group"
                     key={field.id}

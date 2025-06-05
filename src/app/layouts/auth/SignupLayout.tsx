@@ -3,7 +3,11 @@ import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import {
+  CredentialResponse,
+  GoogleLogin,
+  GoogleOAuthProvider,
+} from "@react-oauth/google";
 import { useAuthStore } from "@/app/store/auth/useAuthStore";
 import Footer from "@/components/Footer/Footer";
 import SubHeader from "@/components/Header/SubHeader";
@@ -11,6 +15,9 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ApiError } from "@/app/types/common/api.error.interface";
+import { inputFields } from "@/app/constants/SignupData";
+import Image from "next/image";
 
 type FormValues = {
   firstName: string;
@@ -36,108 +43,25 @@ export default function Signup() {
       await signup(data);
       toast.success("Signup successful! Please log in.");
       useRouter().push("/login");
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as ApiError;
       const message =
-        error.response?.data?.message || "Signup failed. Please try again.";
+        err.response?.data?.message || "Signup failed. Please try again.";
       toast.error(message);
     }
   };
 
-  const handleGoogleLogin = async (credentialResponse: any) => {
+  const handleGoogleLogin = async (credentialResponse: CredentialResponse) => {
     try {
       await ggLogin(credentialResponse.credential);
       toast.success("Google signup successful!");
       useRouter().push("/dashboard");
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as ApiError;
       toast.error("Google signup failed. Please try again.");
+      console.error(err.response?.data);
     }
   };
-
-  const inputFields = [
-    {
-      name: "firstName",
-      label: "First Name",
-      placeHolder: "Enter your first name",
-      type: "text",
-      validation: {
-        required: "First name is required",
-        minLength: {
-          value: 2,
-          message: "First name must be at least 2 characters",
-        },
-      },
-    },
-    {
-      name: "lastName",
-      label: "Last Name",
-      placeHolder: "Enter your last name",
-      type: "text",
-      validation: {
-        required: "Last name is required",
-        minLength: {
-          value: 2,
-          message: "Last name must be at least 2 characters",
-        },
-      },
-    },
-    {
-      name: "username",
-      label: "Username",
-      placeHolder: "Enter your username",
-      type: "text",
-      validation: {
-        required: "Username is required",
-        minLength: {
-          value: 3,
-          message: "Username must be at least 3 characters",
-        },
-      },
-    },
-    {
-      name: "phoneNumber",
-      label: "Phone Number",
-      placeHolder: "Enter your phone number",
-      type: "tel",
-      validation: {
-        required: "Phone number is required",
-        pattern: {
-          value: /^[0-9]{10,}$/,
-          message: "Phone number must be at least 10 digits",
-        },
-      },
-    },
-    {
-      name: "email",
-      label: "Email",
-      placeHolder: "Enter your email",
-      type: "email",
-      validation: {
-        required: "Email is required",
-        pattern: {
-          value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-          message: "Invalid email format",
-        },
-      },
-    },
-    {
-      name: "password",
-      label: "Password",
-      placeHolder: "Enter your password",
-      type: "password",
-      validation: {
-        required: "Password is required",
-        minLength: {
-          value: 8,
-          message: "Password must be at least 8 characters",
-        },
-        pattern: {
-          value: /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).*$/,
-          message:
-            "Password must contain at least one uppercase letter and one special character",
-        },
-      },
-    },
-  ] as const;
 
   const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "";
   if (!clientId) {
@@ -155,10 +79,12 @@ export default function Signup() {
       <GoogleOAuthProvider clientId={clientId}>
         <div className="container relative min-h-screen flex flex-col items-center justify-center px-4 py-8 mx-auto sm:py-12">
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <img
+            <Image
               src="/assets/background_login.png"
               className="w-full h-full object-cover"
               alt="Background"
+              width={1920}
+              height={1080}
             />
           </div>
 

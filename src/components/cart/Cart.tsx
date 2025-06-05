@@ -1,6 +1,7 @@
 import { X } from "lucide-react";
 import React from "react";
 import { Button } from "../ui/button";
+import Image from "next/image";
 
 export default function Cart({
   onClose,
@@ -47,10 +48,12 @@ export default function Cart({
               <div key={index}>
                 <div className="flex items-center gap-x-3">
                   <div>
-                    <img
+                    <Image
                       className="w-16 h-16 object-cover border p-1"
                       src="https://spotify-clone-uploads.s3.ap-southeast-2.amazonaws.com/product/2a4a674e-ae70-450d-aae6-b84e146faa3d.jpg"
                       alt="Cart thumb"
+                      width={64}
+                      height={64}
                     />
                   </div>
 

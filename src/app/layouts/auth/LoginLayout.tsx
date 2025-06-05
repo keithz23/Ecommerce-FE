@@ -1,7 +1,11 @@
 "use client";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import {
+  GoogleOAuthProvider,
+  GoogleLogin,
+  CredentialResponse,
+} from "@react-oauth/google";
 import { Toaster } from "react-hot-toast";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import Footer from "@/components/Footer/Footer";
@@ -10,6 +14,7 @@ import { useAuthStore } from "@/app/store/auth/useAuthStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 type FormValues = {
   email: string;
@@ -36,7 +41,7 @@ const Login = () => {
     await login(data.email, data.password);
   };
 
-  const handleLogin = async (credentialResponse: any) => {
+  const handleLogin = async (credentialResponse: CredentialResponse) => {
     await ggLogin(credentialResponse);
   };
 
@@ -52,10 +57,12 @@ const Login = () => {
 
         <div className="container relative flex flex-col items-center justify-center min-h-screen px-4 py-8 mx-auto sm:py-12">
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <img
-              src="assets/background_login.png"
-              className="object-cover w-full h-full"
+            <Image
+              src="/assets/background_login.png"
               alt="Background"
+              width={1920}
+              height={1080}
+              className="object-cover w-full h-full"
             />
           </div>
 

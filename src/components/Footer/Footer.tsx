@@ -6,6 +6,7 @@ import {
   MyAccountItem,
   SocialItem,
 } from "@/app/constants/FooterData";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -14,9 +15,11 @@ export default function Footer() {
         {/* Logo */}
         <div className="flex flex-col justify-center gap-3">
           <Link href="/">
-            <img
+            <Image
               src="https://shofy-svelte.vercel.app/img/logo/logo.svg"
               alt="Brand Logo"
+              width={32}
+              height={32}
               className="h-8"
             />
           </Link>

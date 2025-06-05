@@ -4,6 +4,7 @@ import { ChevronDown, LogOut } from "lucide-react";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
+import { LanguagesData, SettingsData } from "@/app/constants/SettingsData";
 
 export default function TopHeader() {
   const router = useRouter();
@@ -39,12 +40,12 @@ export default function TopHeader() {
                 : "opacity-0 translate-y-2 pointer-events-none"
             }`}
           >
-            {["English", "Spanish", "French"].map((lang) => (
+            {LanguagesData.map((lang) => (
               <li
-                key={lang}
+                key={lang.id}
                 className="px-4 py-2 cursor-pointer hover:bg-gray-100"
               >
-                {lang}
+                {lang.name}
               </li>
             ))}
           </ul>
@@ -72,15 +73,14 @@ export default function TopHeader() {
                 : "opacity-0 translate-y-2 pointer-events-none"
             }`}
           >
-            <li className="px-4 py-2 cursor-pointer hover:bg-gray-100">
-              <Link href="/profile">My Profile</Link>
-            </li>
-            <li className="px-4 py-2 cursor-pointer hover:bg-gray-100">
-              Wishlist
-            </li>
-            <li className="px-4 py-2 cursor-pointer hover:bg-gray-100">
-              <Link href="/cart-details">Cart</Link>
-            </li>
+            {SettingsData.map((si) => (
+              <li
+                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                key={si.id}
+              >
+                <Link href={si.href}>{si.name}</Link>
+              </li>
+            ))}
             {isAuthenticated ? (
               <button
                 className="flex items-center w-full gap-1 px-4 py-2 text-left cursor-pointer hover:bg-gray-100"

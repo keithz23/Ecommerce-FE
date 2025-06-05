@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import Image from "next/image";
 
 const ButtonItem = [
   { id: 1, name: "New" },
@@ -175,13 +176,17 @@ export default function Deal() {
                   className="pl-8 md:basis-1/2 lg:basis-1/4"
                 >
                   <div className="relative overflow-hidden transition-all duration-300 bg-white shadow-sm group rounded hover:shadow-lg">
-                    <div className="relative">
-                      <img
+                    <div className="relative w-full aspect-[2/3]">
+                      {" "}
+                      <Image
                         src={item.imagePath?.[0]?.url || ""}
                         alt={item.name}
-                        className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-t"
+                        sizes="(max-width: 768px) 100vw, 25vw"
                       />
                     </div>
+
                     <div className="p-5 border-t-2">
                       <span className="block mb-2 text-sm text-mid-night font-semibold line-clamp-2">
                         {item.categories}

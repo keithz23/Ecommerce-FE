@@ -7,6 +7,7 @@ import { useWindowEvents } from "../hooks/useWindowsEvent";
 import Cart from "@/components/cart/Cart";
 import { useCartStore } from "../store/cart/useCartStore";
 import TopHeader from "@/components/about/TopHeader";
+import Image from "next/image";
 
 export default function About() {
   const { isScrolled } = useWindowEvents();
@@ -16,7 +17,7 @@ export default function About() {
     <div className="selection:bg-mid-night selection:text-white">
       {/* Top Header */}
       <TopHeader />
-      
+
       {/* Navbar */}
       <div
         className={`sticky top-0 w-full z-20 bg-white transition-all duration-300 ease-in-out ${
@@ -39,13 +40,13 @@ export default function About() {
         </div>
 
         {/* Image area */}
-        <section className="my-5 sm:my-10 w-full">
-          <img
-            src="assets/about-big-1.jpg"
-            alt="About us"
-            className="w-full h-auto object-cover rounded-lg"
-          />
-        </section>
+        <Image
+          src="/assets/about-big-1.jpg"
+          alt="About us"
+          width={1200}
+          height={600}
+          className="object-cover rounded-lg"
+        />
 
         {/* About area */}
         <section className="max-w-5xl mx-auto p-3 sm:p-5 text-sm sm:text-base lg:text-lg text-dark-gray">
@@ -116,10 +117,13 @@ export default function About() {
             </div>
             <div className="col-span-2 mx-auto relative">
               <div className="p-1 border">
-                <img
+                <Image
                   src="/assets/history-1.jpg"
-                  alt=""
-                  className="object-center"
+                  alt="Historical image of the company"
+                  className="object-cover"
+                  priority
+                  width={600}
+                  height={1200}
                 />
               </div>
 
