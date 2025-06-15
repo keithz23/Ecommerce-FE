@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
   GoogleOAuthProvider,
@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   email: string;
@@ -24,6 +25,7 @@ type FormValues = {
 const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ?? "";
 
 const Login = () => {
+  const router = useRouter();
   const login = useAuthStore((state) => state.login);
   const ggLogin = useAuthStore((state) => state.ggLogin);
   const isLoading = useAuthStore((state) => state.isLoading);
@@ -39,6 +41,7 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     await login(data.email, data.password);
+    router.push("/");
   };
 
   const handleLogin = async (credentialResponse: CredentialResponse) => {

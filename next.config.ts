@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     domains: [
       "spotify-clone-uploads.s3.ap-southeast-2.amazonaws.com",
       "shofy-svelte.vercel.app",
+      "vn4u.vn",
     ],
   },
 };

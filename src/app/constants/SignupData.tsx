@@ -39,7 +39,7 @@ export const inputFields = [
       },
     },
     {
-      name: "phoneNumber",
+      name: "phone",
       label: "Phone Number",
       placeHolder: "Enter your phone number",
       type: "tel",

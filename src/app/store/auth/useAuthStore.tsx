@@ -28,7 +28,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const response = (await authService.signup(formData)) as AuthResponse;
       set({
-        user: response.data.data,
         isLoading: false,
       });
       return response;
@@ -44,9 +43,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ isLoading: true });
     try {
       const response = await authService.login(email, password);
-      toast.success(response.data.message);
+      toast.success('Login Successful');
       set({
-        user: response.data.data,
+        user: response.data.user,
         isAuthenticated: true,
         isLoading: false,
       });
@@ -98,7 +97,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const response = await authService.checkAuth();
       set({
-        user: response.data.data || null,
+        user: response.data.user || null,
         isAuthenticated: response.data.isAuthenticated,
         isLoading: false,
       });

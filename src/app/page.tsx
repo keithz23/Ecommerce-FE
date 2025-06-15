@@ -1,3 +1,4 @@
+"use client";
 import Footer from "@/components/Footer/Footer";
 import { Header } from "@/components/Header/Header";
 import Product from "./product/page";
@@ -6,8 +7,14 @@ import AdSection from "@/components/common/AdSection";
 import Subscribe from "@/components/common/Subscribe";
 import TrendingProduct from "@/components/common/TrendingProduct";
 import Deal from "@/components/common/Deal";
+import { useAuthStore } from "./store/auth/useAuthStore";
+import { useEffect } from "react";
 
 export default function Home() {
+  const checkAuth = useAuthStore((state) => state.checkAuth);
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
   return (
     <div className="selection:bg-mid-night selection:text-white">
       {/* Header */}

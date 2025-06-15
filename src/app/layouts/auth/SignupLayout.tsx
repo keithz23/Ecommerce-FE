@@ -25,10 +25,11 @@ type FormValues = {
   username: string;
   email: string;
   password: string;
-  phoneNumber: string;
+  phone: string;
 };
 
 export default function Signup() {
+  const router = useRouter();
   const { signup, ggLogin, isLoading } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -42,7 +43,7 @@ export default function Signup() {
     try {
       await signup(data);
       toast.success("Signup successful! Please log in.");
-      useRouter().push("/login");
+      router.push("/login");
     } catch (error: unknown) {
       const err = error as ApiError;
       const message =
@@ -90,7 +91,7 @@ export default function Signup() {
 
           <div className="text-center mb-6 sm:mb-8 relative z-10">
             <h3 className="text-gray-900 text-3xl font-semibold mb-1 sm:text-4xl">
-              My account
+              My Account
             </h3>
             <div className="flex justify-center items-center text-sm text-soft-gray gap-2">
               <span className="relative after:content-['•'] after:mx-2 after:text-soft-gray">

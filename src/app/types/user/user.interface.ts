@@ -12,7 +12,7 @@ export interface IUserSignup {
   email: string;
   username: string;
   password: string;
-  phoneNumber: string;
+  phone: string;
 }
 
 export interface IUserUpdate {
@@ -20,7 +20,7 @@ export interface IUserUpdate {
   lastName: string | undefined;
   email: string | undefined;
   username: string | undefined;
-  phoneNumber: string | undefined;
+  phone: string | undefined;
 }
 
 export interface IChangePassword {

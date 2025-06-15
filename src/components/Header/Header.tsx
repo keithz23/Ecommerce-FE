@@ -14,7 +14,6 @@ import Cart from "../cart/Cart";
 import TopHeader from "./TopHeader";
 import { useCartStore } from "@/app/store/cart/useCartStore";
 import CategoriesMenu from "./CategoriesMenu";
-import Image from "next/image";
 
 interface HeaderColor {
   color?: string;
@@ -22,7 +21,8 @@ interface HeaderColor {
 
 export const Header: React.FC<HeaderColor> = ({ color = "bg-black" }) => {
   const { isScrolled, isMobile } = useWindowEvents();
-  const { isAuthenticated, user } = useAuthStore();
+  const user = useAuthStore((state) => state.user);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const { isCartOpen, closeCart, openCart } = useCartStore();
 
   return (
@@ -83,9 +83,7 @@ export const Header: React.FC<HeaderColor> = ({ color = "bg-black" }) => {
               <CircleUserIcon className="w-8 h-8 mr-2 text-gray-700" />
               <div>
                 <span className="text-sm font-medium text-gray-500">
-                  {isAuthenticated
-                    ? `Hi, ${user?.name ?? user?.username}`
-                    : "Sign In"}
+                  {isAuthenticated ? `Hi, ${user?.username}` : "Sign In"}
                 </span>
                 <h5 className="font-bold text-gray-700 text-md">
                   Your Account

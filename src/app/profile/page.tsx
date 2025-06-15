@@ -20,6 +20,7 @@ import {
   InformationFields,
 } from "../types/profile/profile.interface";
 import Image from "next/image";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 type FormValues = {
   oldPassword: string;
@@ -242,7 +243,7 @@ export default function Profile() {
   } as Record<string, JSX.Element>;
 
   return (
-    <>
+    <ProtectedRoute>
       <div className="sticky top-0 z-50 bg-white w-full shadow-md">
         <SubHeader />
       </div>
@@ -282,6 +283,6 @@ export default function Profile() {
       </div>
 
       <Footer />
-    </>
+    </ProtectedRoute>
   );
 }
